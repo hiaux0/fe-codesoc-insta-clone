@@ -1,0 +1,142 @@
+// Colors
+$backgroundColor: #000000;
+$textColor: #d9d9d9;
+$buttonColor: #262626;
+
+* {
+  // border: 1px solid $textColor !important;
+}
+
+.instagramProfile {
+  background-color: $backgroundColor;
+  color: $textColor;
+  width: 420px;
+  height: 60vh;
+  margin: 20px;
+  font-weight: 300;
+  padding: 3px;
+
+  > * {
+    padding: 10px;
+  }
+
+  button {
+    color: $textColor;
+    background-color: $buttonColor;
+  }
+
+  .instaHeader {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+
+    .userNameContainer {
+      .userName {
+        font-size: 26px;
+        font-weight: 700;
+      }
+
+      .notificationsCount {
+      }
+    }
+
+    .addContent {
+    }
+
+    .instaSettings {
+    }
+  }
+
+  .profile {
+    .profileImageSection {
+      display: flex;
+      justify-content: space-between;
+      height: 118px;
+      align-items: center;
+
+      .profileImage {
+        margin-right: 30px;
+
+        img {
+          min-width: 113px;
+        }
+      }
+
+      .profile__statisticContainer {
+        display: flex;
+        justify-content: space-evenly;
+        width: 75%;
+        margin-left: 15px;
+
+        .profile__statistic {
+          margin-right: 20px;
+          align-items: center;
+          text-align: center;
+
+          .statistic__count {
+            font-weight: 700;
+          }
+
+          .statistic__label {
+          }
+        }
+
+        .profile__posts {
+        }
+
+        .profile__followers {
+        }
+
+        .profile__following {
+        }
+      }
+    }
+
+    .profileBio {
+      height: 60px;
+      margin-bottom: 20px;
+
+      .bio__userName {
+        font-weight: 700;
+      }
+
+      .bio__description {
+      }
+    }
+
+    .profileButtons {
+      display: flex;
+      flex-direction: row;
+      // justify-content: space-around;
+
+      button {
+        height: 40px;
+        font-size: 16px;
+        border-radius: 7px;
+        font-weight: 600;
+      }
+
+      .textButton {
+        width: 44%;
+        margin-right: 4px;
+      }
+
+      .iconButton {
+        width: 10%;
+      }
+    }
+  }
+
+  .stories {
+  }
+
+  .instaFeed {
+    height: 300px;
+
+    .feedButtons {
+    }
+
+    .feedImagesGrid {
+    }
+  }
+}
