@@ -1,10 +1,12 @@
 import { inject } from "aurelia";
+import { IUser } from "../../entities/entities";
 import { SocketService } from "../../services/SocketService";
 import { StoreService } from "../../services/StoreService";
 import "./lobby.scss";
 
 @inject()
 export class Lobby {
+  users: IUser[] = [];
   username = "first";
   private chatMessage = "second";
 
@@ -22,11 +24,16 @@ export class Lobby {
       console.log(message, {
         prepend: true,
       });
-      console.log(data);
+      /* prettier-ignore */ console.log('>>>> _ >>>> ~ file: lobby.ts ~ line 26 ~ data', data)
     });
 
     this.socketService.messages.onNewMessage((data) => {
       console.log(data);
+    });
+
+    this.socketService.users.onUpdateUserList((data) => {
+      /* prettier-ignore */ console.log('>>>> _ >>>> ~ file: lobby.ts ~ line 34 ~ data', data)
+      this.users = data.users;
     });
 
     this.socketService.users.onUserJoined((data) => {

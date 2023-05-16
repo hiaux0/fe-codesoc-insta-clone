@@ -1,5 +1,12 @@
 <div class="lobby-container">
-    <!-- <div>Username</div>
+  <div>Member list</div>
+  <div>
+    <template repeat.for="user of users">
+      <p>(${$index}) ${user.username}</p>
+    </template>
+  </div>
+
+  <!-- <div>Username</div>
     <input value.bind="username" placeholder="Username">
     <button click.trigger="setUser()">Use</button>
     <div if.bind="userAlreadyExists">User already exists</div>

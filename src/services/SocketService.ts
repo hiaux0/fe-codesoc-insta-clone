@@ -9,6 +9,12 @@ const socket = io(url);
 export class SocketUserService {
   constructor(private socket: Socket) {}
 
+  public onUpdateUserList(callback) {
+    this.socket.on(MSG.user["updateUserList"], (data) => {
+      callback(data);
+    });
+  }
+
   public onUserJoined(callback) {
     this.socket.on(MSG.user["user joined"], (data) => {
       callback(data);
