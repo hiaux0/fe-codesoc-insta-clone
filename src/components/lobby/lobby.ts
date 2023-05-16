@@ -1,29 +1,22 @@
-import { io } from "socket.io-client";
+import { inject } from "aurelia";
 import { SocketService } from "../../services/SocketService";
+import { StoreService } from "../../services/StoreService";
 import "./lobby.scss";
 
-// const url = "https://jeoput-3000.csb.app/";
-const url = "localhost:3000";
-const socket = io(url);
-
-let connected = false;
-const username = "unset";
-
+@inject()
 export class Lobby {
-  userName = "";
-  private chatMessage = "";
-
-  private socketService: SocketService;
+  username = "first";
+  private chatMessage = "second";
 
   private userAlreadyExists = false;
 
-  constructor() {
-    this.socketService = new SocketService(socket);
-  }
+  constructor(
+    private socketService: SocketService,
+    private storeService: StoreService,
+  ) {}
 
   attached() {
     this.socketService.connection.onLogin((data) => {
-      connected = true;
       // Display the welcome message
       const message = "Welcome to Socket.IO Chat – ";
       console.log(message, {
@@ -65,18 +58,22 @@ export class Lobby {
 
     this.socketService.connection.onReconnect(() => {
       console.log("you have been reconnected");
-      if (username) {
-        socket.emit("add user", username);
-      }
+      const { username } = this.storeService.thisUser;
+      this.socketService.users.emitChangeUser(username);
     });
 
     this.socketService.connection.onReconnectError(() => {
       console.log("attempt to reconnect has failed");
     });
+
+    this.setUser();
+    this.sendMessage();
   }
 
   setUser() {
-    socket.emit("add user", this.userName);
+    const { username } = this.storeService.thisUser;
+
+    this.socketService.users.emitAddUser(username);
   }
 
   sendMessage() {

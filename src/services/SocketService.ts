@@ -1,6 +1,10 @@
 // SocketService.ts
-import { Socket } from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 import { MSG } from "../messages";
+
+// const url = "https://jeoput-3000.csb.app/";
+const url = "localhost:3000";
+const socket = io(url);
 
 export class SocketUserService {
   constructor(private socket: Socket) {}
@@ -21,6 +25,14 @@ export class SocketUserService {
     this.socket.on(MSG.user["user already exists"], (data) => {
       callback(data);
     });
+  }
+
+  public emitAddUser(username: string) {
+    this.socket.emit(MSG.user["add user"], username);
+  }
+
+  public emitChangeUser(username: string) {
+    this.socket.emit(MSG.user["change username"], username);
   }
 }
 
@@ -83,9 +95,9 @@ export class SocketService {
   public messages: SocketMessageService;
   public connection: SocketConnectionService;
 
-  constructor(private socket: Socket) {
-    this.users = new SocketUserService(this.socket);
-    this.messages = new SocketMessageService(this.socket);
-    this.connection = new SocketConnectionService(this.socket);
+  constructor() {
+    this.users = new SocketUserService(socket);
+    this.messages = new SocketMessageService(socket);
+    this.connection = new SocketConnectionService(socket);
   }
 }

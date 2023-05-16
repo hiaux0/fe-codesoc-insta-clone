@@ -16,7 +16,7 @@ $buttonColor: #262626;
   font-weight: 300;
   padding: 3px;
 
-  > * {
+  >* {
     padding: 10px;
   }
 
@@ -34,17 +34,19 @@ $buttonColor: #262626;
       .userName {
         font-size: 26px;
         font-weight: 700;
+
+        .userNameInput {
+          background-color: $backgroundColor;
+          color: $textColor;
+        }
       }
 
-      .notificationsCount {
-      }
+      .notificationsCount {}
     }
 
-    .addContent {
-    }
+    .addContent {}
 
-    .instaSettings {
-    }
+    .instaSettings {}
   }
 
   .profile {
@@ -77,18 +79,14 @@ $buttonColor: #262626;
             font-weight: 700;
           }
 
-          .statistic__label {
-          }
+          .statistic__label {}
         }
 
-        .profile__posts {
-        }
+        .profile__posts {}
 
-        .profile__followers {
-        }
+        .profile__followers {}
 
-        .profile__following {
-        }
+        .profile__following {}
       }
     }
 
@@ -100,8 +98,7 @@ $buttonColor: #262626;
         font-weight: 700;
       }
 
-      .bio__description {
-      }
+      .bio__description {}
     }
 
     .profileButtons {
@@ -127,16 +124,13 @@ $buttonColor: #262626;
     }
   }
 
-  .stories {
-  }
+  .stories {}
 
   .instaFeed {
     height: 300px;
 
-    .feedButtons {
-    }
+    .feedButtons {}
 
-    .feedImagesGrid {
-    }
+    .feedImagesGrid {}
   }
 }
