@@ -2,7 +2,8 @@ import { io } from "socket.io-client";
 import { SocketService } from "../../services/SocketService";
 import "./lobby.scss";
 
-const url = "https://jeoput-3000.csb.app/";
+// const url = "https://jeoput-3000.csb.app/";
+const url = "localhost:3000";
 const socket = io(url);
 
 let connected = false;
