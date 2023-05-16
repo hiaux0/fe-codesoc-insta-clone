@@ -1,10 +1,10 @@
 <div class="lobby-container">
     <div>Username</div>
     <input value.bind="userName" placeholder="Username">
-    <button click.delegate="setUser()">Use</button>
+    <button click.trigger="setUser()">Use</button>
     <div if.bind="userAlreadyExists">User already exists</div>
-    
+
     <div>Chat</div>
     <input value.bind="chatMessage" placeholder="type something...">
-    <button click.delegate="sendMessage()">Send</button>
+    <button click.trigger="sendMessage()">Send</button>
 </div>
