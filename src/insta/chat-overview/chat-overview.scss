@@ -42,6 +42,11 @@ $buttonColor: #262626;
         margin-top: 20px;
         height: 60px;
 
+        &:hover {
+          opacity: 0.8;
+          cursor: pointer;
+        }
+
         .profile-picture {
           width: 60px;
           display: flex;
