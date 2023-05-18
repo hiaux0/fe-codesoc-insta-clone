@@ -1,0 +1,25 @@
+// Colors
+$backgroundColor: #000000;
+$textColor: #d9d9d9;
+$buttonColor: #262626;
+
+.chat-container {
+  width: 420px;
+  height: 500px;
+  margin: 20px;
+  background-color: $backgroundColor;
+  color: $textColor;
+  padding: 10px;
+
+  .opposite-username {
+    height: 50px;
+  }
+
+  .chat-messages-container {
+    height: 400px;
+  }
+
+  .send-message {
+    height: 50px;
+  }
+}
