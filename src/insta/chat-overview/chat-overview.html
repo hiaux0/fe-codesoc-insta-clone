@@ -8,12 +8,12 @@
       <p>Requests</p>
     </div>
     <div class="chats-container">
-      <div class="one-chat" repeat.for="chat of chats">
+      <div class="one-chat" repeat.for="user of storeService.users">
         <div class="profile-picture">
           <div class="circle"></div>
         </div>
         <div class="chat-content">
-          <div class="profile-username">ABC</div>
+          <div class="profile-username">${user.username}</div>
           <div class="chat-preview-container">
             <div class="chat-preview">
               I feel stupid even with you...

@@ -34,11 +34,13 @@ export class Lobby {
     this.socketService.users.onUpdateUserList((data) => {
       /* prettier-ignore */ console.log('>>>> _ >>>> ~ file: lobby.ts ~ line 34 ~ data', data)
       this.users = data.users;
+      this.storeService.updateUsers(this.users);
     });
 
-    this.socketService.users.onUserJoined((data) => {
+    this.socketService.users.onUserJoined((data: IUser) => {
       console.log(`${data.username} joined`);
       console.log(data);
+      this.storeService.addUser(data);
     });
 
     this.socketService.users.onUserLeft((data) => {
