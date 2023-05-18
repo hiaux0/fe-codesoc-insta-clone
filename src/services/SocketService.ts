@@ -1,6 +1,9 @@
 // SocketService.ts
+import { inject } from "aurelia";
 import { io, Socket } from "socket.io-client";
+import { IMessagePayload } from "../entities/entities";
 import { MSG } from "../messages";
+import { StoreService } from "./StoreService";
 
 // const url = "https://jeoput-3000.csb.app/";
 const url = "localhost:3000";
@@ -42,8 +45,9 @@ export class SocketUserService {
   }
 }
 
+@inject()
 export class SocketMessageService {
-  constructor(private socket: Socket) {}
+  constructor(private socket: Socket, private storeService: StoreService) {}
 
   public onNewMessage(callback) {
     this.socket.on(MSG.message["new message"], (data) => {
@@ -52,7 +56,17 @@ export class SocketMessageService {
   }
 
   public sendNewMessage(newMessage: string) {
-    this.socket.emit(MSG.message["new message"], newMessage);
+    const thisUser = this.storeService.thisUser;
+    /* prettier-ignore */ console.log('>>>> _ >>>> ~ file: SocketService.ts ~ line 59 ~ thisUser', thisUser)
+    const messagePayload: IMessagePayload = {
+      message: newMessage,
+      receiver: { username: this.storeService.selectedReceiver },
+      sender: thisUser,
+    };
+    this.socket.emit(
+      MSG.message["new message"],
+      JSON.stringify(messagePayload),
+    );
   }
 
   public onTyping(callback) {
@@ -96,14 +110,15 @@ export class SocketConnectionService {
   }
 }
 
+@inject()
 export class SocketService {
   public users: SocketUserService;
   public messages: SocketMessageService;
   public connection: SocketConnectionService;
 
-  constructor() {
+  constructor(private storeService: StoreService) {
     this.users = new SocketUserService(socket);
-    this.messages = new SocketMessageService(socket);
+    this.messages = new SocketMessageService(socket, storeService);
     this.connection = new SocketConnectionService(socket);
   }
 }

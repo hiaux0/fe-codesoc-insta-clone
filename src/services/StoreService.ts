@@ -3,14 +3,14 @@ import { IUser } from "../entities/entities";
 export class StoreService {
   users: IUser[] = [];
   thisUser: IUser = null;
-  selecterUsername: string;
+  selectedReceiver: string;
 
   public initThisUser(user: IUser) {
     this.thisUser = user;
-    this.selecterUsername = 'server';
+    this.selectedReceiver = 'server';
   }
   public selectUser(user: IUser) {
-    this.selecterUsername = user.username;
+    this.selectedReceiver = user.username;
   }
   public addUser(user: IUser) {
     const exists = this.users.find((u) => u.username === user.username);
