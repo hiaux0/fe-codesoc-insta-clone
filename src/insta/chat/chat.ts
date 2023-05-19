@@ -8,6 +8,7 @@ import "./chat.scss";
 export class Chat {
   private typedMessage = "";
   private messages: IMessagePayload[] = [];
+  private chatMessageContainer: HTMLDivElement;
 
   get sender(): IUser {
     const sender = this.storeService.thisUser;
@@ -37,7 +38,6 @@ export class Chat {
   private onKeypress(event: KeyboardEvent) {
     if (event.key === "Enter") {
       this.sendMessage();
-      this.typedMessage = "";
     }
 
     return true;
@@ -53,5 +53,17 @@ export class Chat {
     };
     this.messages.push(messagePayload);
     this.socketService.messages.sendNewMessage(messagePayload);
+
+    this.clearTypedMessage();
+    this.scrollToBottom();
+  }
+
+  private clearTypedMessage() {
+    this.typedMessage = "";
+  }
+
+  private scrollToBottom() {
+    this.chatMessageContainer.scrollTop =
+      this.chatMessageContainer.scrollHeight;
   }
 }

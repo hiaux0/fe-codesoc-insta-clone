@@ -14,7 +14,7 @@
       Send
     </button>
   </div>
-  <div class="chat-messages-container">
+  <div ref="chatMessageContainer" class="chat-messages-container">
     <div repeat.for="message of messages" class="message-container">
       <div class="message my-messages" if.bind="message.sender === sender">
         ${message.message}
