@@ -15,12 +15,11 @@
     </button>
   </div>
   <div class="chat-messages-container">
-    chat messages
-    <template repeat.for="message of messages">
-      <div class="my-messages" if.bind="message.sender === sender">
+    <div repeat.for="message of messages" class="message-container">
+      <div class="message my-messages" if.bind="message.sender === sender">
         ${message.message}
       </div>
-      <div class="their-messages" else>${message.message}</div>
-    </template>
+      <div class="message their-messages" else>${message.message}</div>
+    </div>
   </div>
 </div>

@@ -1,7 +1,9 @@
 // Colors
+$grey: #262626;
 $backgroundColor: #000000;
 $textColor: #d9d9d9;
-$buttonColor: #262626;
+$textBackgroundColor: $grey;
+$buttonColor: $grey;
 
 .chat-container {
   width: 420px;
@@ -16,15 +18,30 @@ $buttonColor: #262626;
   }
 
   .chat-messages-container {
-    height: 400px;
-    display: flex;
-    flex-direction: column;
+    height: 80%;
+    overflow-y: scroll;
 
-    .my-messages {
-      align-self: flex-end;
+    .message-container {
+      display: flex;
+      flex-direction: column;
+
+      .message {
+        margin-top: 10px;
+        height: 40px;
+        border-radius: 15px;
+        padding: 5px 14px;
+      }
+
+      .my-messages {
+        align-self: flex-end;
+        background-color: $textBackgroundColor;
+      }
+
+      .their-messages {
+        align-self: flex-start;
+        border: 1px solid $grey;
+      }
     }
-
-    .their-messages {}
   }
 
   .send-message {
