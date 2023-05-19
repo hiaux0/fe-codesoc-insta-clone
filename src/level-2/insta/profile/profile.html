@@ -1,0 +1,68 @@
+<div class="instagram-profile container">
+  <!-- {/* instaHeader */} -->
+  <section class="insta-header">
+    <section class="user-name-container">
+      <span class="lock-icon">
+        <LockOutlined />
+      </span>
+      <span class="user-name">
+        <input
+          class="user-name-input"
+          value.bind="username"
+          keydown.trigger="onKeypress($event)"
+          tabindex="0"
+        />
+      </span>
+      <span class="notifications-count">1</span>
+    </section>
+    <p class="header-button-container">
+      <button type="button" class="add-content">+</button>
+      <button type="button" class="insta-settings">=</button>
+    </p>
+  </section>
+
+  <!-- {/* profile */} -->
+  <section class="profile">
+    <section class="profile-image-section">
+      <div class="profile-image"></div>
+      <div class="profile-statistic-container">
+        <div class="profile-statistic profile__posts">
+          <div class="statistic-count">24</div>
+          <div class="statistic-label">Posts</div>
+        </div>
+        <div class="profile-statistic profile-followers">
+          <div class="statistic-count">281</div>
+          <div class="statistic-label">Followers</div>
+        </div>
+        <div class="profile-statistic profile-following">
+          <div class="statistic-count">368</div>
+          <div class="statistic-label">Following</div>
+        </div>
+      </div>
+    </section>
+    <section class="profile-bio">
+      <div class="bio-user-name">user-abc</div>
+      <div class="bio-description">
+        <p>Hi</p>
+        <p>this that or no</p>
+      </div>
+    </section>
+    <section class="profile-buttons">
+      <button type="button" class="text-button">Edit Profile</button>
+      <button type="button" class="text-button">Share Profile</button>
+      <button type="button" class="icon-button">
+        <UserAddOutlined />
+      </button>
+    </section>
+  </section>
+
+  <!-- {/* stories */} -->
+  <section class="stories">stories</section>
+
+  <!-- {/* instaFeed */} -->
+  <section class="insta-feed">
+    instaFeed
+    <p class="feed-buttons">feedButtons</p>
+    <p class="feed-images-grid">feedImagesGrid</p>
+  </section>
+</div>
