@@ -1,7 +1,7 @@
 import { inject } from "aurelia";
-import { IMessagePayload, IUser } from "../../advanced/entities/entities";
-import { SocketService } from "../../advanced/services/SocketService";
-import { StoreService } from "../../advanced/services/StoreService";
+import { IMessagePayload, IUser } from "../../../advanced/entities/entities";
+import { SocketService } from "../../../advanced/services/SocketService";
+import { StoreService } from "../../../advanced/services/StoreService";
 import "./chat.scss";
 
 @inject()

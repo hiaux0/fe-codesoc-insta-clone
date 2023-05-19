@@ -1,6 +1,6 @@
 import { inject } from "aurelia";
-import { SocketService } from "../../advanced/services/SocketService";
-import { StoreService } from "../../advanced/services/StoreService";
+import { SocketService } from "../../../advanced/services/SocketService";
+import { StoreService } from "../../../advanced/services/StoreService";
 import "./profile.scss";
 
 @inject()
