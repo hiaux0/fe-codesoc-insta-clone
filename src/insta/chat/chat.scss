@@ -6,13 +6,6 @@ $textBackgroundColor: $grey;
 $buttonColor: $grey;
 
 .chat-container {
-  width: 420px;
-  height: 500px;
-  margin: 20px;
-  background-color: $backgroundColor;
-  color: $textColor;
-  padding: 10px;
-
   .opposite-username {
     height: 50px;
   }

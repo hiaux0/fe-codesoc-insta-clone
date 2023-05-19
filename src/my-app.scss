@@ -1,5 +1,21 @@
+// Colors
+$grey: #262626;
+$backgroundColor: #000000;
+$textColor: #d9d9d9;
+$textBackgroundColor: $grey;
+$buttonColor: $grey;
+
 .insta-clone-container {
   display: flex;
+}
+
+.container {
+  width: 420px;
+  height: 500px;
+  margin: 20px;
+  background-color: $backgroundColor;
+  color: $textColor;
+  padding: 10px;
 }
 
 html {

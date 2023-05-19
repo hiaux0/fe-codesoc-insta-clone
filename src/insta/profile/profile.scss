@@ -7,15 +7,7 @@ $buttonColor: #262626;
   // border: 1px solid $textColor !important;
 }
 
-.instagramProfile {
-  background-color: $backgroundColor;
-  color: $textColor;
-  width: 420px;
-  height: 500px;
-  margin: 20px;
-  font-weight: 300;
-  padding: 3px;
-
+.instagram-profile {
   >* {
     padding: 10px;
   }
@@ -25,38 +17,38 @@ $buttonColor: #262626;
     background-color: $buttonColor;
   }
 
-  .instaHeader {
+  .insta-header {
     display: flex;
     justify-content: space-between;
     height: 40px;
 
-    .userNameContainer {
-      .userName {
+    .user-name-container {
+      .user-name {
         font-size: 26px;
         font-weight: 700;
 
-        .userNameInput {
+        .user-name-input {
           background-color: $backgroundColor;
           color: $textColor;
         }
       }
 
-      .notificationsCount {}
+      .notifications-count {}
     }
 
-    .addContent {}
+    .add-content {}
 
-    .instaSettings {}
+    .insta-settings {}
   }
 
   .profile {
-    .profileImageSection {
+    .profile-image-section {
       display: flex;
       justify-content: space-between;
       height: 118px;
       align-items: center;
 
-      .profileImage {
+      .profile-image {
         margin-right: 30px;
 
         img {
@@ -64,44 +56,44 @@ $buttonColor: #262626;
         }
       }
 
-      .profile__statisticContainer {
+      .profile-statistic-container {
         display: flex;
         justify-content: space-evenly;
         width: 75%;
         margin-left: 15px;
 
-        .profile__statistic {
+        .profile-statistic {
           margin-right: 20px;
           align-items: center;
           text-align: center;
 
-          .statistic__count {
+          .statistic-count {
             font-weight: 700;
           }
 
-          .statistic__label {}
+          .statistic-label {}
         }
 
-        .profile__posts {}
+        .profile-posts {}
 
-        .profile__followers {}
+        .profile-followers {}
 
-        .profile__following {}
+        .profile-following {}
       }
     }
 
-    .profileBio {
+    .profile-bio {
       height: 60px;
       margin-bottom: 20px;
 
-      .bio__userName {
+      .bio-user-name {
         font-weight: 700;
       }
 
-      .bio__description {}
+      .bio-description {}
     }
 
-    .profileButtons {
+    .profile-buttons {
       display: flex;
       flex-direction: row;
       // justify-content: space-around;
@@ -113,12 +105,12 @@ $buttonColor: #262626;
         font-weight: 600;
       }
 
-      .textButton {
+      .text-button {
         width: 44%;
         margin-right: 4px;
       }
 
-      .iconButton {
+      .icon-button {
         width: 10%;
       }
     }
@@ -126,11 +118,11 @@ $buttonColor: #262626;
 
   .stories {}
 
-  .instaFeed {
+  .insta-feed {
     height: 300px;
 
-    .feedButtons {}
+    .feed-buttons {}
 
-    .feedImagesGrid {}
+    .feed-images-grid {}
   }
 }
