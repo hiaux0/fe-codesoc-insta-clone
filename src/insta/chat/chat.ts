@@ -1,5 +1,5 @@
 import { inject } from "aurelia";
-import { IUser } from "../../entities/entities";
+import { IMessagePayload, IUser } from "../../entities/entities";
 import { SocketService } from "../../services/SocketService";
 import { StoreService } from "../../services/StoreService";
 import "./chat.scss";
@@ -7,10 +7,16 @@ import "./chat.scss";
 @inject()
 export class Chat {
   private typedMessage = "";
+  private messages: IMessagePayload[] = [];
+
+  get sender(): IUser {
+    const sender = this.storeService.thisUser;
+    return sender;
+  }
 
   get receiver(): IUser {
     const target = this.storeService.users.find(
-      (u) => u.username === this.storeService.selectedReceiver,
+      (u) => u.id === this.storeService.selectedReceiver.id,
     );
     return target;
   }
@@ -22,10 +28,21 @@ export class Chat {
 
   private onKeypress(event: KeyboardEvent) {
     if (event.key === "Enter") {
-      /* prettier-ignore */ console.log('>>>> _ >>>> ~ file: chat.ts ~ line 26 ~ this.typedMessage', this.typedMessage)
-      this.socketService.messages.sendNewMessage(this.typedMessage);
+      this.sendMessage();
     }
 
     return true;
+  }
+
+  private sendMessage() {
+    const thisUser = this.storeService.thisUser;
+    const messagePayload: IMessagePayload = {
+      message: this.typedMessage,
+      receiver: this.storeService.selectedReceiver,
+      sender: thisUser,
+      createdAt: Date.now(),
+    };
+    this.messages.push(messagePayload);
+    this.socketService.messages.sendNewMessage(JSON.stringify(messagePayload));
   }
 }

@@ -11,7 +11,10 @@ export class Profile {
     private socketService: SocketService,
     private storeService: StoreService,
   ) {
-    this.storeService.initThisUser({ username: this.username });
+    this.storeService.initThisUser({
+      username: this.username,
+      id: "change-meeeee",
+    });
   }
 
   private onKeypress(event: KeyboardEvent) {

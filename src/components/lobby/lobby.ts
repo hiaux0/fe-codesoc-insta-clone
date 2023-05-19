@@ -43,6 +43,13 @@ export class Lobby {
       this.storeService.addUser(data);
     });
 
+    this.socketService.users.onUsernameChanged((data: IUser) => {
+      console.log(`${data.username} changed`);
+      console.log(data);
+      // this.storeService.addUser(data);
+      this.storeService
+    });
+
     this.socketService.users.onUserLeft((data) => {
       console.log(`${data.username} left`);
       console.log(data);

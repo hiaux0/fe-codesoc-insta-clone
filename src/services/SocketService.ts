@@ -1,7 +1,6 @@
 // SocketService.ts
 import { inject } from "aurelia";
 import { io, Socket } from "socket.io-client";
-import { IMessagePayload } from "../entities/entities";
 import { MSG } from "../messages";
 import { StoreService } from "./StoreService";
 
@@ -20,6 +19,12 @@ export class SocketUserService {
 
   public onUserJoined(callback) {
     this.socket.on(MSG.user["user joined"], (data) => {
+      callback(data);
+    });
+  }
+
+  public onUsernameChanged(callback) {
+    this.socket.on(MSG.user["change username"], (data) => {
       callback(data);
     });
   }
@@ -55,18 +60,8 @@ export class SocketMessageService {
     });
   }
 
-  public sendNewMessage(newMessage: string) {
-    const thisUser = this.storeService.thisUser;
-    /* prettier-ignore */ console.log('>>>> _ >>>> ~ file: SocketService.ts ~ line 59 ~ thisUser', thisUser)
-    const messagePayload: IMessagePayload = {
-      message: newMessage,
-      receiver: { username: this.storeService.selectedReceiver },
-      sender: thisUser,
-    };
-    this.socket.emit(
-      MSG.message["new message"],
-      JSON.stringify(messagePayload),
-    );
+  public sendNewMessage(messagePayload: string) {
+    this.socket.emit(MSG.message["new message"], messagePayload);
   }
 
   public onTyping(callback) {

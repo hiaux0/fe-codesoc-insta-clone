@@ -17,6 +17,14 @@ $buttonColor: #262626;
 
   .chat-messages-container {
     height: 400px;
+    display: flex;
+    flex-direction: column;
+
+    .my-messages {
+      align-self: flex-end;
+    }
+
+    .their-messages {}
   }
 
   .send-message {
