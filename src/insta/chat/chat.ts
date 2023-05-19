@@ -37,6 +37,7 @@ export class Chat {
   private onKeypress(event: KeyboardEvent) {
     if (event.key === "Enter") {
       this.sendMessage();
+      this.typedMessage = "";
     }
 
     return true;
