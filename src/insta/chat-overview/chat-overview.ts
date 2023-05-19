@@ -1,6 +1,6 @@
 import { inject } from "aurelia";
-import { IUser } from "../../entities/entities";
-import { StoreService } from "../../services/StoreService";
+import { IUser } from "../../advanced/entities/entities";
+import { StoreService } from "../../advanced/services/StoreService";
 
 @inject()
 export class ChatOverview {

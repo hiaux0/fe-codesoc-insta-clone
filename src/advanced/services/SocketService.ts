@@ -2,7 +2,7 @@
 import { inject } from "aurelia";
 import { io, Socket } from "socket.io-client";
 import { IMessagePayload } from "../entities/entities";
-import { MSG } from "../messages";
+import { MSG } from "../../messages";
 import { SocketId } from "../valueObjects/valueObjects";
 import { StoreService } from "./StoreService";
 
