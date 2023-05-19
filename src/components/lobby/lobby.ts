@@ -83,8 +83,10 @@ export class Lobby {
       console.log("attempt to reconnect has failed");
     });
 
-    this.setUser();
-    this.sendMessage();
+    this.socketService.onConnectionEstablished(() => {
+      this.setUser();
+      // this.sendMessage();
+    });
   }
 
   setUser() {

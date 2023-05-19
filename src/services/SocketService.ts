@@ -3,6 +3,7 @@ import { inject } from "aurelia";
 import { io, Socket } from "socket.io-client";
 import { IMessagePayload } from "../entities/entities";
 import { MSG } from "../messages";
+import { SocketId } from "../valueObjects/valueObjects";
 import { StoreService } from "./StoreService";
 
 // const url = "https://jeoput-3000.csb.app/";
@@ -115,10 +116,33 @@ export class SocketService {
   public users: SocketUserService;
   public messages: SocketMessageService;
   public connection: SocketConnectionService;
+  private socket: Socket;
 
   constructor(private storeService: StoreService) {
     this.users = new SocketUserService(socket, storeService);
     this.messages = new SocketMessageService(socket, storeService);
     this.connection = new SocketConnectionService(socket);
+
+    this.socket = socket;
+
+    this.onConnectionEstablished(() => {
+      this.socket = socket;
+    });
+  }
+
+  public onConnectionEstablished(callback) {
+    this.socket.on(
+      MSG.connection["connection created"],
+      (payload: SocketId) => {
+        callback(payload);
+      },
+    );
+  }
+
+  public getThisSocket(): Socket {
+    if (!this.socket.id) {
+      throw new Error("socket not ready");
+    }
+    return this.socket;
   }
 }

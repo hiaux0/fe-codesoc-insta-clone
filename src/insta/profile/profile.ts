@@ -11,9 +11,11 @@ export class Profile {
     private socketService: SocketService,
     private storeService: StoreService,
   ) {
-    this.storeService.initThisUser({
-      username: this.username,
-      id: "change-meeeee",
+    this.socketService.onConnectionEstablished((socketId) => {
+      this.storeService.initThisUser({
+        username: this.username,
+        id: socketId,
+      });
     });
   }
 
@@ -23,5 +25,10 @@ export class Profile {
     }
 
     return true;
+  }
+
+  attached() {
+    // const socket = this.socketService.getThisSocket();
+    // /* prettier-ignore */ console.log('>>>> _ >>>> ~ file: profile.ts ~ line 31 ~ socket.id', socket.id)
   }
 }
