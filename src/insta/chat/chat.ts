@@ -24,7 +24,15 @@ export class Chat {
   constructor(
     private storeService: StoreService,
     private socketService: SocketService,
-  ) {}
+  ) {
+    this.initSocketEvents();
+  }
+
+  private initSocketEvents() {
+    this.socketService.messages.onNewMessage((data: IMessagePayload) => {
+      this.messages.push(data);
+    });
+  }
 
   private onKeypress(event: KeyboardEvent) {
     if (event.key === "Enter") {

@@ -26,15 +26,9 @@ export class Lobby {
       console.log(message, {
         prepend: true,
       });
-      /* prettier-ignore */ console.log('>>>> _ >>>> ~ file: lobby.ts ~ line 26 ~ data', data)
-    });
-
-    this.socketService.messages.onNewMessage((data) => {
-      console.log(data);
     });
 
     this.socketService.users.onUpdateUserList((data) => {
-      /* prettier-ignore */ console.log('>>>> _ >>>> ~ file: lobby.ts ~ line 34 ~ data', data)
       this.storeService.updateUsers(data.users);
     });
 
