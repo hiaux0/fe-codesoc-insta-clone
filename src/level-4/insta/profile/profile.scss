@@ -1,0 +1,128 @@
+// Colors
+$backgroundColor: #000000;
+$textColor: #d9d9d9;
+$buttonColor: #262626;
+
+* {
+  // border: 1px solid $textColor !important;
+}
+
+.instagram-profile {
+  >* {
+    padding: 10px;
+  }
+
+  button {
+    color: $textColor;
+    background-color: $buttonColor;
+  }
+
+  .insta-header {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+
+    .user-name-container {
+      .user-name {
+        font-size: 26px;
+        font-weight: 700;
+
+        .user-name-input {
+          background-color: $backgroundColor;
+          color: $textColor;
+        }
+      }
+
+      .notifications-count {}
+    }
+
+    .add-content {}
+
+    .insta-settings {}
+  }
+
+  .profile {
+    .profile-image-section {
+      display: flex;
+      justify-content: space-between;
+      height: 118px;
+      align-items: center;
+
+      .profile-image {
+        margin-right: 30px;
+
+        img {
+          min-width: 113px;
+        }
+      }
+
+      .profile-statistic-container {
+        display: flex;
+        justify-content: space-evenly;
+        width: 75%;
+        margin-left: 15px;
+
+        .profile-statistic {
+          margin-right: 20px;
+          align-items: center;
+          text-align: center;
+
+          .statistic-count {
+            font-weight: 700;
+          }
+
+          .statistic-label {}
+        }
+
+        .profile-posts {}
+
+        .profile-followers {}
+
+        .profile-following {}
+      }
+    }
+
+    .profile-bio {
+      height: 60px;
+      margin-bottom: 20px;
+
+      .bio-user-name {
+        font-weight: 700;
+      }
+
+      .bio-description {}
+    }
+
+    .profile-buttons {
+      display: flex;
+      flex-direction: row;
+      // justify-content: space-around;
+
+      button {
+        height: 40px;
+        font-size: 16px;
+        border-radius: 7px;
+        font-weight: 600;
+      }
+
+      .text-button {
+        width: 44%;
+        margin-right: 4px;
+      }
+
+      .icon-button {
+        width: 10%;
+      }
+    }
+  }
+
+  .stories {}
+
+  .insta-feed {
+    height: 300px;
+
+    .feed-buttons {}
+
+    .feed-images-grid {}
+  }
+}
