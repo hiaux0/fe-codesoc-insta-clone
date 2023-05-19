@@ -1,12 +1,18 @@
 <div class="chat-container">
-  <h1 class="opposite-username">${receiver.username}</h1>
+  <h1 class="opposite-username">
+    ${receiver.username || 'Please select a receiver'}
+  </h1>
   <div class="send-message">
     <input
       autofocus
       placeholder="Message..."
       value.bind="typedMessage"
+      disabled.bind="!receiver"
       keydown.trigger="onKeypress($event)"
     />
+    <button click.trigger="sendMessage()" disabled.bind="!receiver">
+      Send
+    </button>
   </div>
   <div class="chat-messages-container">
     chat messages

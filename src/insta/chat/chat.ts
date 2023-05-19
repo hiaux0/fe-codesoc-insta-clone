@@ -43,6 +43,6 @@ export class Chat {
       createdAt: Date.now(),
     };
     this.messages.push(messagePayload);
-    this.socketService.messages.sendNewMessage(JSON.stringify(messagePayload));
+    this.socketService.messages.sendNewMessage(messagePayload);
   }
 }

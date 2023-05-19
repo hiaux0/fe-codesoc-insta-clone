@@ -1,6 +1,7 @@
 // SocketService.ts
 import { inject } from "aurelia";
 import { io, Socket } from "socket.io-client";
+import { IMessagePayload } from "../entities/entities";
 import { MSG } from "../messages";
 import { StoreService } from "./StoreService";
 
@@ -8,8 +9,9 @@ import { StoreService } from "./StoreService";
 const url = "localhost:3000";
 const socket = io(url);
 
+@inject()
 export class SocketUserService {
-  constructor(private socket: Socket) {}
+  constructor(private socket: Socket, private storeService: StoreService) {}
 
   public onUpdateUserList(callback) {
     this.socket.on(MSG.user["updateUserList"], (data) => {
@@ -60,8 +62,11 @@ export class SocketMessageService {
     });
   }
 
-  public sendNewMessage(messagePayload: string) {
-    this.socket.emit(MSG.message["new message"], messagePayload);
+  public sendNewMessage(messagePayload: IMessagePayload) {
+    this.socket.emit(
+      MSG.message["new message"],
+      JSON.stringify(messagePayload),
+    );
   }
 
   public onTyping(callback) {
@@ -112,7 +117,7 @@ export class SocketService {
   public connection: SocketConnectionService;
 
   constructor(private storeService: StoreService) {
-    this.users = new SocketUserService(socket);
+    this.users = new SocketUserService(socket, storeService);
     this.messages = new SocketMessageService(socket, storeService);
     this.connection = new SocketConnectionService(socket);
   }

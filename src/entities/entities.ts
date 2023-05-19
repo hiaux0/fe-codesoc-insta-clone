@@ -2,6 +2,7 @@ export interface IUser {
   username: string;
   id: string;
 }
+export type UserWithIdOnly = Pick<IUser, "id">;
 
 export interface IChangeUserResponse {
   oldUsername: string;

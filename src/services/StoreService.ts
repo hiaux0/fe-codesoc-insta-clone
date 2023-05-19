@@ -1,4 +1,8 @@
-import { IUser } from "../entities/entities";
+import {
+  IChangeUserResponse,
+  IUser,
+  UserWithIdOnly,
+} from "../entities/entities";
 
 export class StoreService {
   users: IUser[] = [];
@@ -11,6 +15,10 @@ export class StoreService {
   }
   public selectUser(user: IUser) {
     this.selectedReceiver = user;
+  }
+  public getUser(user: UserWithIdOnly) {
+    const target = this.users.find((u) => u.id === user.id);
+    return target;
   }
   public addUser(user: IUser) {
     const exists = this.users.find((u) => u.username === user.username);
@@ -25,7 +33,19 @@ export class StoreService {
     const filtered = this.users.filter((u) => u.username === user.username);
     this.users = filtered;
   }
-  public updateUser(user: IUser): void {
+  public updateUser(changedUserData: IChangeUserResponse): void {
+    const target = this.getUser({ id: changedUserData.userId });
+    target.username = changedUserData.username;
+    const withUpdatedUser = this.users.map((u) => {
+      if (u.id !== changedUserData.userId) return u;
+
+      const updatedUser = {
+        ...u,
+        username: changedUserData.username,
+      };
+      return updatedUser;
+    });
+    this.updateUsers(withUpdatedUser);
   }
   public updateUsers(users: IUser[]) {
     this.users = users;

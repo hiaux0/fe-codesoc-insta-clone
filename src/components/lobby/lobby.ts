@@ -1,12 +1,14 @@
 import { inject } from "aurelia";
-import { IUser } from "../../entities/entities";
+import { IChangeUserResponse, IUser } from "../../entities/entities";
 import { SocketService } from "../../services/SocketService";
 import { StoreService } from "../../services/StoreService";
 import "./lobby.scss";
 
 @inject()
 export class Lobby {
-  users: IUser[] = [];
+  get users(): IUser[] {
+    return this.storeService.users;
+  }
   username = "first";
   private chatMessage = "second";
 
@@ -33,8 +35,7 @@ export class Lobby {
 
     this.socketService.users.onUpdateUserList((data) => {
       /* prettier-ignore */ console.log('>>>> _ >>>> ~ file: lobby.ts ~ line 34 ~ data', data)
-      this.users = data.users;
-      this.storeService.updateUsers(this.users);
+      this.storeService.updateUsers(data.users);
     });
 
     this.socketService.users.onUserJoined((data: IUser) => {
@@ -43,11 +44,11 @@ export class Lobby {
       this.storeService.addUser(data);
     });
 
-    this.socketService.users.onUsernameChanged((data: IUser) => {
-      console.log(`${data.username} changed`);
-      console.log(data);
+    this.socketService.users.onUsernameChanged((user: IChangeUserResponse) => {
+      console.log(`${user.username} changed`);
+      console.log(user);
       // this.storeService.addUser(data);
-      this.storeService
+      this.storeService.updateUser(user);
     });
 
     this.socketService.users.onUserLeft((data) => {
@@ -93,6 +94,6 @@ export class Lobby {
   }
 
   sendMessage() {
-    this.socketService.messages.sendNewMessage(this.chatMessage);
+    // this.socketService.messages.sendNewMessage(this.chatMessage);
   }
 }
